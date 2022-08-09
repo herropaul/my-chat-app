@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
   <ChakraProvider>
-    <Sidebar/>
+    <Component {...pageProps} />
   </ChakraProvider>
   )
 }

@@ -40,7 +40,7 @@ export default function Sidebar() {
 
         <Button m={5} p={6}>New Chat</Button>
 
-        <Flex overflowX="scroll" direction="column" sx={{scrollbarWidth: "none"}}>
+        <Flex overflowX="scroll" direction="column" sx={{scrollbarWidth: "none"}} flex={1}>
           <Chat/>
           <Chat/>
           <Chat/>
