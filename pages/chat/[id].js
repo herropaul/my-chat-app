@@ -1,5 +1,6 @@
 import Sidebar from "../../components/Sidebar";
 import { Flex, Avatar, Heading, Input, FormControl, Button, Text} from "@chakra-ui/react";
+import Head from 'next/head';
 
 const Topbar = () => {
     return(
@@ -31,6 +32,10 @@ export default function Chat () {
         <Flex
         h="100vh"
         >
+            <Head>
+                <title>Chat App</title>
+            </Head>
+
             <Sidebar/>
             
             <Flex
