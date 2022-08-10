@@ -1,5 +1,5 @@
 import Sidebar from "../../components/Sidebar";
-import { Flex, Avatar, Heading, Input, FormControl, Button} from "@chakra-ui/react";
+import { Flex, Avatar, Heading, Input, FormControl, Button, Text} from "@chakra-ui/react";
 
 const Topbar = () => {
     return(
@@ -41,8 +41,65 @@ export default function Chat () {
 
                 <Flex
                 flex={1}
+                direction="column"
+                pt={4} mx={3}
+                overflowX="scroll"
+                sx={{scrollbarWidth: "none"}}
                 >
-
+                    <Flex bg="blue.100" w="fit-content" minWidth="6rem" borderRadius="lg" p={3} m={1}>
+                        <Text>This is a dummy message</Text>
+                    </Flex>
+                    <Flex bg="blue.100" w="fit-content" minWidth="6rem" borderRadius="lg" p={3} m={1}>
+                        <Text>a</Text>
+                    </Flex>
+                    <Flex bg="green.100" w="fit-content" minWidth="6rem" borderRadius="lg" p={3} m={1} alignSelf="flex-end">
+                        <Text>This is a dummy message</Text>
+                    </Flex>
+                    <Flex bg="blue.100" w="fit-content" minWidth="6rem" borderRadius="lg" p={3} m={1}>
+                        <Text>This is a dummy message</Text>
+                    </Flex>
+                    <Flex bg="blue.100" w="fit-content" minWidth="6rem" borderRadius="lg" p={3} m={1}>
+                        <Text>a</Text>
+                    </Flex>
+                    <Flex bg="green.100" w="fit-content" minWidth="6rem" borderRadius="lg" p={3} m={1} alignSelf="flex-end">
+                        <Text>This is a dummy message</Text>
+                    </Flex>
+                    <Flex bg="blue.100" w="fit-content" minWidth="6rem" borderRadius="lg" p={3} m={1}>
+                        <Text>This is a dummy message</Text>
+                    </Flex>
+                    <Flex bg="blue.100" w="fit-content" minWidth="6rem" borderRadius="lg" p={3} m={1}>
+                        <Text>a</Text>
+                    </Flex>
+                    <Flex bg="green.100" w="fit-content" minWidth="6rem" borderRadius="lg" p={3} m={1} alignSelf="flex-end">
+                        <Text>This is a dummy message</Text>
+                    </Flex>
+                    <Flex bg="blue.100" w="fit-content" minWidth="6rem" borderRadius="lg" p={3} m={1}>
+                        <Text>This is a dummy message</Text>
+                    </Flex>
+                    <Flex bg="blue.100" w="fit-content" minWidth="6rem" borderRadius="lg" p={3} m={1}>
+                        <Text>a</Text>
+                    </Flex>
+                    <Flex bg="green.100" w="fit-content" minWidth="6rem" borderRadius="lg" p={3} m={1} alignSelf="flex-end">
+                        <Text>This is a dummy message</Text>
+                    </Flex>
+                    <Flex bg="blue.100" w="fit-content" minWidth="6rem" borderRadius="lg" p={3} m={1}>
+                        <Text>This is a dummy message</Text>
+                    </Flex>
+                    <Flex bg="blue.100" w="fit-content" minWidth="6rem" borderRadius="lg" p={3} m={1}>
+                        <Text>a</Text>
+                    </Flex>
+                    <Flex bg="green.100" w="fit-content" minWidth="6rem" borderRadius="lg" p={3} m={1} alignSelf="flex-end">
+                        <Text>This is a dummy message</Text>
+                    </Flex>
+                    <Flex bg="blue.100" w="fit-content" minWidth="6rem" borderRadius="lg" p={3} m={1}>
+                        <Text>This is a dummy message</Text>
+                    </Flex>
+                    <Flex bg="blue.100" w="fit-content" minWidth="6rem" borderRadius="lg" p={3} m={1}>
+                        <Text>a</Text>
+                    </Flex>
+                    <Flex bg="green.100" w="fit-content" minWidth="6rem" borderRadius="lg" p={3} m={1} alignSelf="flex-end">
+                        <Text>This is a dummy message</Text>
+                    </Flex>
                 </Flex>
 
                 <Bottombar/>
