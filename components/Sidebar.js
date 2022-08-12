@@ -5,7 +5,7 @@ import React from 'react'
 import { auth } from '../firebaseconfig'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollection } from 'react-firebase-hooks/firestore';
-import { collection } from 'firebase/firestore'
+import { collection, addDoc } from 'firebase/firestore'
 import { db } from '../firebaseconfig'
 import getOtherEmail from '../utils/getOtherEmail'
 import { useRouter } from 'next/router'
@@ -18,6 +18,19 @@ export default function Sidebar() {
 
   const redirect = (id) => {
     router.push(`/chat/${id}`);
+  }
+
+  // Create a new document in our firestore collection
+  const newChat = async () => {
+    const input = prompt('Enter email recipient');
+    if(!chatExists(input) && input !== user.email && input !== null){
+      await addDoc(collection(db, "chats"), {users: [user.email, input]})
+    }
+    return;
+  }
+
+  const chatExists = (email) => {
+    chats?.find(chat => (chat.users.includes(user.email) && chat.users.includes(email)))
   }
 
   const ChatList = () => {
@@ -55,7 +68,7 @@ export default function Sidebar() {
             <IconButton isRound size="sm" icon={<ArrowLeftIcon/>} onClick={() => signOut(auth)}/>
         </Flex>
 
-        <Button m={5} p={6}>New Chat</Button>
+        <Button m={5} p={6} onClick={() => newChat()}>New Chat</Button>
 
         <Flex overflowX="scroll" direction="column" sx={{scrollbarWidth: "none"}} flex={1}>
           <ChatList/>
