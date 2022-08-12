@@ -1,6 +1,11 @@
 import Sidebar from "../../components/Sidebar";
 import { Flex, Avatar, Heading, Input, FormControl, Button, Text} from "@chakra-ui/react";
 import Head from 'next/head';
+import { useRouter } from "next/router";
+import { useCollectionData } from 'react-firebase-hooks/firestore';
+import { db } from "../../firebaseconfig";
+import { orderBy, collection, query } from "firebase/firestore";
+
 
 const Topbar = () => {
     return(
@@ -28,6 +33,26 @@ const Bottombar = () => {
 }
 
 export default function Chat () {
+    
+    const router = useRouter();
+    const {id} = router.query;
+    
+    const q = query(collection(db, "chats", id, "messages"), orderBy("timestamp"))
+    const [messages] = useCollectionData(q);
+    console.log(messages)
+
+    const GetMessages = () => {
+        return(
+            messages?.map(msg => {
+                return(
+                    <Flex key={Math.random()} bg="blue.100" w="fit-content" minWidth="6rem" borderRadius="lg" p={3} m={1}>
+                            <Text>{msg.text}</Text>
+                    </Flex>
+                )
+            })
+        )
+    }
+
     return(
         <Flex
         h="100vh"
@@ -51,60 +76,7 @@ export default function Chat () {
                 overflowX="scroll"
                 sx={{scrollbarWidth: "none"}}
                 >
-                    <Flex bg="blue.100" w="fit-content" minWidth="6rem" borderRadius="lg" p={3} m={1}>
-                        <Text>This is a dummy message</Text>
-                    </Flex>
-                    <Flex bg="blue.100" w="fit-content" minWidth="6rem" borderRadius="lg" p={3} m={1}>
-                        <Text>a</Text>
-                    </Flex>
-                    <Flex bg="green.100" w="fit-content" minWidth="6rem" borderRadius="lg" p={3} m={1} alignSelf="flex-end">
-                        <Text>This is a dummy message</Text>
-                    </Flex>
-                    <Flex bg="blue.100" w="fit-content" minWidth="6rem" borderRadius="lg" p={3} m={1}>
-                        <Text>This is a dummy message</Text>
-                    </Flex>
-                    <Flex bg="blue.100" w="fit-content" minWidth="6rem" borderRadius="lg" p={3} m={1}>
-                        <Text>a</Text>
-                    </Flex>
-                    <Flex bg="green.100" w="fit-content" minWidth="6rem" borderRadius="lg" p={3} m={1} alignSelf="flex-end">
-                        <Text>This is a dummy message</Text>
-                    </Flex>
-                    <Flex bg="blue.100" w="fit-content" minWidth="6rem" borderRadius="lg" p={3} m={1}>
-                        <Text>This is a dummy message</Text>
-                    </Flex>
-                    <Flex bg="blue.100" w="fit-content" minWidth="6rem" borderRadius="lg" p={3} m={1}>
-                        <Text>a</Text>
-                    </Flex>
-                    <Flex bg="green.100" w="fit-content" minWidth="6rem" borderRadius="lg" p={3} m={1} alignSelf="flex-end">
-                        <Text>This is a dummy message</Text>
-                    </Flex>
-                    <Flex bg="blue.100" w="fit-content" minWidth="6rem" borderRadius="lg" p={3} m={1}>
-                        <Text>This is a dummy message</Text>
-                    </Flex>
-                    <Flex bg="blue.100" w="fit-content" minWidth="6rem" borderRadius="lg" p={3} m={1}>
-                        <Text>a</Text>
-                    </Flex>
-                    <Flex bg="green.100" w="fit-content" minWidth="6rem" borderRadius="lg" p={3} m={1} alignSelf="flex-end">
-                        <Text>This is a dummy message</Text>
-                    </Flex>
-                    <Flex bg="blue.100" w="fit-content" minWidth="6rem" borderRadius="lg" p={3} m={1}>
-                        <Text>This is a dummy message</Text>
-                    </Flex>
-                    <Flex bg="blue.100" w="fit-content" minWidth="6rem" borderRadius="lg" p={3} m={1}>
-                        <Text>a</Text>
-                    </Flex>
-                    <Flex bg="green.100" w="fit-content" minWidth="6rem" borderRadius="lg" p={3} m={1} alignSelf="flex-end">
-                        <Text>This is a dummy message</Text>
-                    </Flex>
-                    <Flex bg="blue.100" w="fit-content" minWidth="6rem" borderRadius="lg" p={3} m={1}>
-                        <Text>This is a dummy message</Text>
-                    </Flex>
-                    <Flex bg="blue.100" w="fit-content" minWidth="6rem" borderRadius="lg" p={3} m={1}>
-                        <Text>a</Text>
-                    </Flex>
-                    <Flex bg="green.100" w="fit-content" minWidth="6rem" borderRadius="lg" p={3} m={1} alignSelf="flex-end">
-                        <Text>This is a dummy message</Text>
-                    </Flex>
+                    <GetMessages/>
                 </Flex>
 
                 <Bottombar/>
